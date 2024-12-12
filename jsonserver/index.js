@@ -14,6 +14,12 @@ server.use(jsonServer.bodyParser)
 server.use(forms.array())
 server.use(bodyParser.urlencoded({extended: true}))
 
+router.render = (req, res) => {
+    res.jsonp({
+        data: res.locals.data
+    })
+}
+
 server.use(router)
 server.listen(3000, () => {
     console.log('JSON Server is running')
